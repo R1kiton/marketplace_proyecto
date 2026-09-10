@@ -77,7 +77,7 @@ const armarParametros = () => {
 
 const obtenerProductos = async (params) => {
   const query = params && params.toString() ? `?${params.toString()}` : "";
-  const res = await fetch(`datos.php${query}`);
+  const res = await fetch(`/api/datos.php${query}`);
   return await res.json();
 };
 
