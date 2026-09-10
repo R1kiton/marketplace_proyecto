@@ -4,7 +4,7 @@ $port     = "14161";
 $dbname   = "defaultdb";                             
 $username = "avnadmin";                             
 $pass = "AVNS_UFuayGXIvzz9FG00QIk";                   
-$ssl_ca   = __DIR__ . "/ca.pem";                     
+$ssl_ca   = __DIR__ . "/../ca.pem";                     
 
 try {
     $options = [
@@ -12,9 +12,8 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ];
 
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $pass, $options);
-    
-    echo "¡Conexión exitosa a Aiven!";
+    $conn = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $pass, $options);
+
 } catch (PDOException $e) {
     die("Error al conectar: " . $e->getMessage());
 }
