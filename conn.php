@@ -6,8 +6,16 @@ $username = "avnadmin";
 $password = "AVNS_UFuayGXIvzz9FG00QIk";                   
 $ssl_ca   = __DIR__ . "/ca.pem";                     
 
-$conn = new PDO("mysql:host=localhost;dbname=mercado_libre;charset=utf8","root","");
+try {
+    $options = [
+        PDO::MYSQL_ATTR_SSL_CA => $ssl_ca,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ];
 
-
-
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password, $options);
+    
+    echo "¡Conexión exitosa a Aiven!";
+} catch (PDOException $e) {
+    die("Error al conectar: " . $e->getMessage());
+}
 ?>
