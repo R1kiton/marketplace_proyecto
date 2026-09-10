@@ -3,7 +3,7 @@ $host     = "mysql-1a314ecb-mercado-fake.b.aivencloud.com";
 $port     = "14161";                                 
 $dbname   = "defaultdb";                             
 $username = "avnadmin";                             
-$password = "AVNS_UFuayGXIvzz9FG00QIk";                   
+$pass = "AVNS_UFuayGXIvzz9FG00QIk";                   
 $ssl_ca   = __DIR__ . "/ca.pem";                     
 
 try {
@@ -12,7 +12,7 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ];
 
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password, $options);
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $pass, $options);
     
     echo "¡Conexión exitosa a Aiven!";
 } catch (PDOException $e) {
